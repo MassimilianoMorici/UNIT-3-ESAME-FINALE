@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Netflix</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-dark sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+
+            <!-- LOGO -->
+            <a class="navbar-brand" href="#">
+                <img src="./assets/imgs/Netflix_Logo_RGB.png" alt="Netflix" class="img_logo_netflix">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- NAVBAR PARTE SINISTRA -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TV Shows</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Movies</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recently Added</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My List</a>
+                    </li>
+                </ul>
+
+                <!-- NAVBAR PARTE DESTRA-->
+                <ul class="navbar-nav mb-2 mb-lg-0">
+
+                    <!-- TASTO SEARCH E LA SUA FUNZIONE -->
+                    <li class="nav-item d-flex align-items-center me-2">
+                        <div id="searchContainer" style="display: none;">
+                            <input type="text" class="form-control" placeholder="Titoli,persone,generi"
+                                id="searchInput">
+                        </div>
+                        <a class="nav-link text-light ms-3" href="#" onclick="toggleSearch(event)">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item d-flex align-items-center me-2">
+                        <a class="nav-link fw-bold text-light" href="#">KIDS</a>
+                    </li>
+
+                    <li class="nav-item d-flex align-items-center me-2">
+                        <a class="nav-link text-light" href="#"><i class="bi bi-bell-fill"></i></a>
+                    </li>
+
+
+                    <!-- MENù A COMPARSA ACCOUNT -->
+                    <li class="nav-item dropdown">
+                        <a id="asd1" class="nav-link dropdown-toggle d-flex align-items-center text-light" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://xsgames.co/randomusers/avatar.php?g=male" class="p-0 img_account"
+                                alt="profile-img">
+                            <span class="ms-2 d-inline-block text-truncate custom-mw"></span>
+                        </a>
+
+                        <ul id="asd2" class="dropdown-menu dropdown-menu-end menu_position">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <img src="assets/imgs/logoGallo.png" class="img-thumbnail p-0 img_accountSecondari"
+                                        alt="profile-img">
+                                    <span class="ms-2 text-light">Gallo</span></a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <img src="assets/imgs/logoProcione.png"
+                                        class="img-thumbnail p-0 img_accountSecondari" alt="profile-img">
+                                    <span class="ms-2 text-light">Procione</span></a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <img src="assets/imgs/logoAlieno.png" class="img-thumbnail p-0 img_accountSecondari"
+                                        alt="profile-img">
+                                    <span class="ms-2 text-light">Alieno</span></a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <img src="assets/imgs/logoBambini.png"
+                                        class="img-thumbnail p-0 img_accountSecondari" alt="profile-img">
+                                    <span class="ms-2 text-light">Bambini</span></a>
+                            </li>
+
+                            <li><a class="dropdown-item text-light" href="#"><i
+                                        class="bi bi-pencil iconeMod ms-1"></i><span class="ms-3 text-light">Gestisci i
+                                        profili</span></a></a></li>
+
+                            <li><a class="dropdown-item text-light" href="#"><i
+                                        class="bi bi-intersect iconeMod ms-1"></i></i><span
+                                        class="ms-3 text-light">Trasferisci
+                                        profilo</span></a></a></li>
+
+
+                            <li><a class="dropdown-item text-light" href="#"><i
+                                        class="bi bi-person iconeMod ms-1"></i><span
+                                        class="ms-3 text-light">Account</span></a></a></li>
+
+                            <li><a class="dropdown-item text-light" href="#"><i
+                                        class="bi bi-question-circle iconeMod ms-1"></i><span
+                                        class="ms-3 text-light">Centro
+                                        assistenza</span></a></a></li>
+                            <hr>
+                            <li><a class="dropdown-item text-light text-center" href="#">Esci da Netflix</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+    <!-- INIZIO MAIN -->
+    <main class="bg-dark text-light ms-4 ps-2 mt-5">
+        <div class="d-flex mb-4 w-100">
+            <h2>TV Shows</h2>
+            <div class="dropdown ms-3">
+                <button class="btn btn-secondary dropdown-toggle genres_mod text-light" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Genres
+                </button>
+                <ul class="dropdown-menu genres_mod">
+                    <li><button class="dropdown-item text-light asdasd" type="button"><span
+                                class="genres_mod_color">Trending Now</span></button></li>
+                    <li><button class="dropdown-item text-light" type="button"><span class="genres_mod_color">Watch it
+                                Again</span></button></li>
+                    <li><button class="dropdown-item text-light" type="button"><span class="genres_mod_color">New
+                                Releases</span></button></li>
+                    <li><button class="dropdown-item text-light" type="button"><span
+                                class="genres_mod_color">Action</span></button></li>
+                    <li><button class="dropdown-item text-light" type="button"><span
+                                class="genres_mod_color">Fantasy</span></button></li>
+                    <li><button class="dropdown-item text-light" type="button"><span
+                                class="genres_mod_color">Horror</span></button></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+    <!--PRIMO CAROSELLO....DIVISO IN 3 CAROSELLI PER RENDERLO FULL RESPONSIVE CON SOLO BOOTSTRAP-->
+
+    <section class="ms-3 me-4 carousel">
+        <h3 class="ms-3 mt-5 pb-4 text-light">Trending Now</h3>
+
+        <!-- Carosello per schermo piccolo -->
+        <div class="container-fluid d-block d-sm-none">
+            <div id="carousel-sm-1" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-sm-1"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-sm-1"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo medio -->
+        <div class="container-fluid d-none d-sm-block d-lg-none">
+            <div id="carousel-md-1" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-md-1"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-md-1"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo grande -->
+        <div class="container-fluid d-none d-lg-block d-xxl-block w-100">
+            <div id="carousel-lg-1" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-lg-1"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-lg-1"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!--PRIMO CAROSELLO FINE-->
+    <!--SECONDO CAROSELLO....DIVISO IN 3 CAROSELLI PER RENDERLO FULL RESPONSIVE CON SOLO BOOTSTRAP-->
+
+    <section class="ms-3 me-4 carousel">
+        <h3 class="ms-3 mt-5 pb-4 text-light">Watch It Again</h3>
+
+        <!-- Carosello per schermo piccolo -->
+        <div class="container-fluid d-block d-sm-none">
+            <div id="carousel-sm-2" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-sm-2"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-sm-2"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo medio -->
+        <div class="container-fluid d-none d-sm-block d-lg-none">
+            <div id="carousel-md-2" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-md-2"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-md-2"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo grande -->
+        <div class="container-fluid d-none d-lg-block d-xxl-block w-100">
+            <div id="carousel-lg-2" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-lg-2"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-lg-2"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!--SECONDO CAROSELLO FINE-->
+    <!--TERZO CAROSELLO....DIVISO IN 3 CAROSELLI PER RENDERLO FULL RESPONSIVE CON SOLO BOOTSTRAP-->
+
+
+
+    <section class="ms-3 me-4 mb-5 carousel">
+        <h3 class="ms-3 mt-5 pb-4 text-light">New Releases</h3>
+
+        <!-- Carosello per schermo piccolo -->
+        <div class="container-fluid d-block d-sm-none">
+            <div id="carousel-sm-3" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/14.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/16.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/17.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-sm-3"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-sm-3"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo medio -->
+        <div class="container-fluid d-none d-sm-block d-lg-none">
+            <div id="carousel-md-3" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/14.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/16.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/17.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-md-3"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-md-3"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo grande -->
+        <div class="container-fluid d-none d-lg-block d-xxl-block w-100">
+            <div id="carousel-lg-3" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/14.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/16.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/17.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-lg-3"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-lg-3"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--TERZO CAROSELLO FINE-->
+    <!--QUARTO CAROSELLO....DIVISO IN 3 CAROSELLI PER RENDERLO FULL RESPONSIVE CON SOLO BOOTSTRAP-->
+
+    <section class="ms-3 me-4 mb-5 carousel">
+        <h3 class="ms-3 mt-5 pb-4 text-light">Action</h3>
+
+        <!-- Carosello per schermo piccolo -->
+        <div class="container-fluid d-block d-sm-none">
+            <div id="carousel-sm-4" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/17.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-sm-4"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-sm-4"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo medio -->
+        <div class="container-fluid d-none d-sm-block d-lg-none">
+            <div id="carousel-md-4" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/17.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-md-4"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-md-4"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo grande -->
+        <div class="container-fluid d-none d-lg-block d-xxl-block w-100">
+            <div id="carousel-lg-4" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/17.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-lg-4"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-lg-4"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!--QUARTO CAROSELLO FINE-->
+    <!--QUINTO CAROSELLO....DIVISO IN 3 CAROSELLI PER RENDERLO FULL RESPONSIVE CON SOLO BOOTSTRAP-->
+
+
+    <section class="ms-3 me-4 mb-5 carousel">
+        <h3 class="ms-3 mt-5 pb-4 text-light">Fantasy</h3>
+
+        <!-- Carosello per schermo piccolo -->
+        <div class="container-fluid d-block d-sm-none">
+            <div id="carousel-sm-5" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-sm-5"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-sm-5"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo medio -->
+        <div class="container-fluid d-none d-sm-block d-lg-none">
+            <div id="carousel-md-5" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-md-5"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-md-5"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo grande -->
+        <div class="container-fluid d-none d-lg-block d-xxl-block w-100">
+            <div id="carousel-lg-5" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/10.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/4.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/13.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/15.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/6.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-lg-5"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-lg-5"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!--QUINTO CAROSELLO FINE-->
+    <!--SESTO CAROSELLO....DIVISO IN 3 CAROSELLI PER RENDERLO FULL RESPONSIVE CON SOLO BOOTSTRAP-->
+
+
+    <section class="ms-3 me-4 mb-5 carousel">
+        <h3 class="ms-3 mt-5 pb-4 text-light">Horror</h3>
+
+        <!-- Carosello per schermo piccolo -->
+        <div class="container-fluid d-block d-sm-none">
+            <div id="carousel-sm-6" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/16.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/14.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                            <div class="col-6 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-sm-6"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-sm-6"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo medio -->
+        <div class="container-fluid d-none d-sm-block d-lg-none">
+            <div id="carousel-md-6" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/16.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/14.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                            <div class="col-3 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-md-6"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-md-6"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <!-- Carosello per schermo grande -->
+        <div class="container-fluid d-none d-lg-block d-xxl-block w-100">
+            <div id="carousel-lg-6" class="carousel slide bg-dark">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/3.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/7.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/2.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/12.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/18.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/9.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row flex-nowrap gx-2">
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/5.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/16.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/1.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/14.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/8.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                            <div class="col-2 movie-card">
+                                <img src="assets/imgs/movies/11.png" class="d-block w-100" alt="Immagine 13">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev btn btn_mod" type="button" data-bs-target="#carousel-lg-6"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn btn_mod" type="button" data-bs-target="#carousel-lg-6"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FINE CAROSELLI-->
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <div class="row modmia">
+                <span class="mb-3 text-start">
+                    <a href="#"><i class="bi bi-facebook iconeMod text-white-50"></i></a>
+                    <a href="#"><i class="bi bi-instagram ms-3 iconeMod text-white-50"></i></a>
+                    <a href="#"><i class="bi bi-twitter ms-3 iconeMod text-white-50"></i></a>
+                    <a href="#"><i class="bi bi-youtube ms-3 iconeMod text-white-50"></i></a>
+                </span>
+                <div class="col-6 col-md-3 text-start">
+                    <p>Audiodescrizione</p>
+                    <p>Raporti con gli investitori</p>
+                    <p>Note legali</p>
+                </div>
+                <div class="col-6 col-md-3 text-start">
+                    <p>Centro assistenza</p>
+                    <p>Opportunità di lavoro</p>
+                    <p>Preferenze per i cookie</p>
+                </div>
+                <div class="col-6 col-md-3 text-start">
+                    <p>Carte regalo</p>
+                    <p>Condizioni di utilizzo</p>
+                    <p>Informazioni sull'azienda</p>
+                </div>
+                <div class="col-6 col-md-3 text-start">
+                    <p>Media Center</p>
+                    <p>Privacy</p>
+                    <p>Contattaci</p>
+                </div>
+                <div class="text-start mt-3">
+                    <button class="btn btn-secondary genres_mod" type="button">Codice di servizio</button>
+                </div>
+                <div class="text-start mt-4">
+                    <p>© 1997-2023 Netflix, Inc.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

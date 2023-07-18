@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #212529;
+}
+
+.img_logo_netflix {
+    width: 150px;
+}
+
+/* MENù A COMPARSA ACCOUNT */
+
+.menu_position {
+    left: -110px;
+}
+
+.img_account {
+    width: 60px;
+    height: 60px;
+}
+
+.img_accountSecondari {
+    width: 40px;
+    height: 40px;
+}
+
+.iconeMod {
+    font-size: 30px;
+}
+
+/* FINE */
+
+/* BARRA RICERCA */
+
+#searchInput:focus {
+    border: 1px solid rgb(83, 83, 83);
+    box-shadow: none;
+}
+
+/* FINE */
+
+/* DROPMENU CATEGORIE */
+
+.genres_mod {
+    background-color: black;
+    border-radius: 0;
+}
+
+.genres_mod:hover {
+    border: 1px solid white;
+    background-color: rgb(20, 20, 20);
+}
+
+.genres_mod:focus {
+    border: 1px solid white;
+    background-color: rgb(20, 20, 20);
+}
+
+.genres_mod_color {
+    display: block;
+    color: white;
+}
+
+.genres_mod_color:hover {
+    color: black;
+}
+
+/* FINE */
+
+/* CARD */
+
+.container {
+    max-width: 100% !important;
+}
+
+
+.movie-card {
+    transition: 0.3s;
+
+}
+
+.movie-card:hover {
+
+    transform: scale(1.20);
+    z-index: 3;
+}
+
+.carousel-inner {
+    overflow: visible;
+}
+
+.btn_mod {
+    z-index: 10;
+    width: 1rem;
+    display: -webkit-box;
+    margin-right: 17px;
+}
+
+/* FINE */
+
+/*PER LA FUNZIONE DI SCROLL DELLA PAGINA*/
+.carousel {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.carousel.visible {
+    opacity: 1;
+}
+
+/* FINE */
+
+/* FOOTER */
+
+.modmia {
+    margin: 20px auto 0;
+    max-width: 980px;
+}
+
+/* FINE */
