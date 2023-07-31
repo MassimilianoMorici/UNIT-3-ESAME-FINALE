@@ -6,6 +6,10 @@ body {
     background-color: #212529;
 }
 
+img:hover {
+    cursor: pointer;
+}
+
 .img_logo_netflix {
     width: 150px;
 }

@@ -1,7 +1,7 @@
 
 // DEFINISCO IL COMPORTAMENTO DEL MENù A COMPARSA ACCOUNT
-var dropdownToggle = document.querySelector('#asd1');
-var dropdownMenu = document.querySelector('#asd2');
+var dropdownToggle = document.querySelector('#toggleMod');
+var dropdownMenu = document.querySelector('#menuMod');
 
 dropdownToggle.addEventListener('mouseenter', function () {
     dropdownMenu.classList.add('show');
